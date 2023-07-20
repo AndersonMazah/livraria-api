@@ -86,4 +86,8 @@ public class ClientesApplication : IClientesApplication
         return new Response<ClientesDto>();
     }
 
+    public async Task<bool> VerificarLoginDeClienteAsync(string username, string password)
+    {
+        return await _clientesRepository.VerificarLoginDeClienteAsync(username, password);
+    }
 }

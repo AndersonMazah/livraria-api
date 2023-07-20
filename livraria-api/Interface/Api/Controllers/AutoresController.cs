@@ -3,10 +3,12 @@ using Livraria.Core.Application.Ports;
 using Livraria.Core.Domain.Exceptions;
 using Livraria.Core.Domain.Models;
 using Livraria.Core.Domain.Shared;
+using Livraria.Infra.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.Interface.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/autor")]
 public class AutoresController : ControllerBase
@@ -37,6 +39,7 @@ public class AutoresController : ControllerBase
         }
     }
 
+    //[AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<Response<Paginator<AutoresDto>>>> ObterTodosAutores([FromQuery] int pageSize, int pageNumber)
     {

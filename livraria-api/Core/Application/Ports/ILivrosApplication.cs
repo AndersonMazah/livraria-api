@@ -6,7 +6,7 @@ namespace Livraria.Core.Application.Ports;
 
 public interface ILivrosApplication
 {
-    Task<Response<LivrosDto>> ObterPorIdAsync(int id);
+    Task<Response<LivrosDetalheDto>> ObterPorIdAsync(int id);
 
     Task<Response<Paginator<LivrosDto>>> ObterTodosAsync(int pageSize, int pageNumber, int idAutor);
 

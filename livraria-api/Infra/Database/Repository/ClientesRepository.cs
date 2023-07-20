@@ -53,4 +53,9 @@ public class ClientesRepository : GenericRepository<Clientes>, IClientesReposito
     {
         return await DbSet.AnyAsync(c => c.Id == idCliente);
     }
+
+    public async Task<bool> VerificarLoginDeClienteAsync(string username, string password)
+    {
+        return await DbSet.AnyAsync(c => c.Email.Equals(username) && c.Senha.Equals(password));
+    }
 }

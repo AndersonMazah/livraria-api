@@ -22,6 +22,7 @@ public static class ExtensionCoreApplication
             config.CreateMap<Autores, AutoresDto>().ReverseMap();
             config.CreateMap<Clientes, ClientesDto>().ReverseMap();
             config.CreateMap<Livros, LivrosDto>().ReverseMap();
+            config.CreateMap<Livros, LivrosDetalheDto>().ReverseMap();
             config.CreateMap<Livros, InfoLivroDto>().ReverseMap();
             config.CreateMap<Avaliacao, AvaliacaoDto>().ReverseMap();
             config.CreateMap<Vendas, VendasDto>().ReverseMap();

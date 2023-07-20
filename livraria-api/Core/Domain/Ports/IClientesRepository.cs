@@ -16,4 +16,6 @@ public interface IClientesRepository : IGenericRepository<Clientes>
     Task DeletarAsync(Clientes clientes);
 
     Task<bool> VerificarSeClienteExiste(int idCliente);
+
+    Task<bool> VerificarLoginDeClienteAsync(string username, string password);
 }

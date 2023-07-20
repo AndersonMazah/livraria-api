@@ -15,4 +15,6 @@ public interface IClientesApplication
     Task<Response<ClientesDto>> AtualizarAsync(AtualizaClienteModel modelo);
 
     Task<Response<ClientesDto>> DeletarAsync(int id);
+
+    Task<bool> VerificarLoginDeClienteAsync(string username, string password);
 }

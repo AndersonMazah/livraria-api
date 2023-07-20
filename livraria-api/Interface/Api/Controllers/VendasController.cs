@@ -3,10 +3,12 @@ using Livraria.Core.Application.Ports;
 using Livraria.Core.Domain.Exceptions;
 using Livraria.Core.Domain.Models;
 using Livraria.Core.Domain.Shared;
+using Livraria.Infra.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.Interface.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/venda")]
 public class VendasController : ControllerBase

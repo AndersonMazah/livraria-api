@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Livraria.Core.Application.Extension;
+using Livraria.Infra.Auth;
 using Livraria.Infra.Database.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddExtensionInfraDatabase();
 builder.Services.AddExtensionCoreApplication();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -25,7 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.UseMiddleware<BasicAuthMiddleware>();
 
 app.MapControllers();
 

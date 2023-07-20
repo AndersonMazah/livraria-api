@@ -26,15 +26,15 @@ public class LivrosApplication : ILivrosApplication
         _vendasRepository = vendasRepository;
     }
 
-    public async Task<Response<LivrosDto>> ObterPorIdAsync(int id)
+    public async Task<Response<LivrosDetalheDto>> ObterPorIdAsync(int id)
     {
         Livros? livro = await _livrosRepository.ObterPorIdAsync(id);
         if (livro is null)
         {
             throw new RegistroNaoLocalizadoException(id.ToString());
         }
-        LivrosDto livrosDto = _mapper.Map<Livros, LivrosDto>(livro);
-        return new Response<LivrosDto>(livrosDto);
+        LivrosDetalheDto livroDetalheDto = _mapper.Map<Livros, LivrosDetalheDto>(livro);
+        return new Response<LivrosDetalheDto>(livroDetalheDto);
     }
 
     public async Task<Response<Paginator<LivrosDto>>> ObterTodosAsync(int pageSize, int pageNumber, int idAutor)

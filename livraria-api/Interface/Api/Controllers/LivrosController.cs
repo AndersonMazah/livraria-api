@@ -3,10 +3,12 @@ using Livraria.Core.Application.Ports;
 using Livraria.Core.Domain.Exceptions;
 using Livraria.Core.Domain.Models;
 using Livraria.Core.Domain.Shared;
+using Livraria.Infra.Auth;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Livraria.Interface.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/livro")]
 public class LivrosController : ControllerBase
@@ -24,7 +26,7 @@ public class LivrosController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Response<LivrosDto>>> ObterPorId(int id)
+    public async Task<ActionResult<Response<LivrosDetalheDto>>> ObterPorId(int id)
     {
         try
         {
@@ -32,7 +34,7 @@ public class LivrosController : ControllerBase
         }
         catch (RegistroNaoLocalizadoException e)
         {
-            return StatusCode(StatusCodes.Status404NotFound, new Response<LivrosDto>(
+            return StatusCode(StatusCodes.Status404NotFound, new Response<LivrosDetalheDto>(
                 ErrorCodes.REGISTRO_NAO_ENCONTRADO,
                 $"Registro de Livro id={e.Message} não encontrado"));
         }
